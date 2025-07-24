@@ -203,24 +203,25 @@ h1 {
     }
     
     .key {
-        width: min(10vw, 45px);
-        height: min(14vw, 55px);
-        font-size: min(4vw, 16px);
+        width: min(12vw, 55px);
+        height: min(16vw, 60px);
+        font-size: min(4.5vw, 18px);
     }
     
     #enter-key, #delete-key {
-        width: min(15vw, 70px);
-        font-size: min(3.5vw, 14px);
+        width: min(18vw, 80px);
+        font-size: min(4vw, 16px);
     }
     
     .key-row {
-        gap: min(2vw, 8px);
+        gap: min(2.5vw, 10px);
     }
     
     #keyboard {
-        gap: min(2vw, 10px);
+        gap: min(2.5vw, 12px);
         margin-top: 3vh;
-        max-width: min(98vw, 450px);
+        max-width: min(100vw, 500px);
+        width: 100%;
     }
     
     #message {
@@ -249,18 +250,19 @@ h1 {
     }
     
     .key {
-        width: min(8.5vw, 40px);
-        height: min(12vw, 50px);
-        font-size: min(3.5vw, 14px);
+        width: min(10vw, 45px);
+        height: min(14vw, 55px);
+        font-size: min(4vw, 16px);
     }
     
     #enter-key, #delete-key {
-        width: min(13vw, 60px);
-        font-size: min(3vw, 12px);
+        width: min(15vw, 70px);
+        font-size: min(3.5vw, 14px);
     }
     
     #keyboard {
-        max-width: min(99vw, 400px);
+        max-width: min(100vw, 450px);
+        width: 100%;
     }
 }
 
