@@ -21,40 +21,44 @@ body {
 }
 
 h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: min(6vw, 2rem);
+    margin-bottom: 2vh;
     margin-top: 0;
 }
 
 #board {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    gap: 5px;
-    margin-bottom: 20px;
+    gap: 0.5vw;
+    margin-bottom: 2vh;
     justify-items: center;
     max-width: 100%;
+    width: 100%;
 }
 
 .row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
+    gap: 0.3vw;
     justify-content: center;
     max-width: 100%;
+    width: min(95vw, 300px);
 }
 
 .cell {
-    width: 50px;
-    height: 50px;
+    width: min(12vw, 50px);
+    height: min(12vw, 50px);
     border: 2px solid #3a3a3c;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    font-size: min(4vw, 1.5em);
     background: #121213;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 .cell.correct {
@@ -75,26 +79,27 @@ h1 {
 #keyboard {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-top: 20px;
+    gap: 0.5vw;
+    margin-top: 2vh;
     width: 100%;
-    max-width: 400px;
+    max-width: min(95vw, 400px);
 }
 
 .key-row {
     display: flex;
     justify-content: center;
-    gap: 4px;
+    gap: 0.3vw;
+    width: 100%;
 }
 
 .key {
-    width: 35px;
-    height: 45px;
+    width: min(8vw, 35px);
+    height: min(12vw, 45px);
     border: none;
     border-radius: 4px;
     background: #818384;
     color: #fff;
-    font-size: 12px;
+    font-size: min(3vw, 12px);
     font-weight: bold;
     cursor: pointer;
     display: flex;
@@ -103,6 +108,9 @@ h1 {
     text-transform: uppercase;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+    min-width: 20px;
+    min-height: 30px;
 }
 
 .key:hover {
@@ -126,21 +134,21 @@ h1 {
 }
 
 #enter-key {
-    width: 60px;
-    font-size: 10px;
+    width: min(12vw, 50px);
+    font-size: min(2.5vw, 10px);
 }
 
 #delete-key {
-    width: 60px;
-    font-size: 10px;
+    width: min(12vw, 50px);
+    font-size: min(2.5vw, 10px);
 }
 
 #message {
-    margin: 15px 0;
-    font-size: 16px;
+    margin: 1.5vh 0;
+    font-size: min(4vw, 16px);
     font-weight: bold;
     min-height: 24px;
-    padding: 0 10px;
+    padding: 0 2vw;
 }
 
 .message.win {
@@ -159,13 +167,13 @@ h1 {
     background: #818384;
     color: #fff;
     border: none;
-    padding: 12px 24px;
+    padding: min(2vh, 12px) min(4vw, 24px);
     border-radius: 4px;
-    font-size: 16px;
+    font-size: min(3.5vw, 16px);
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 1vh;
     touch-action: manipulation;
 }
 
@@ -177,87 +185,6 @@ h1 {
     background: #6b6d6e;
 }
 
-/* Mobile Responsive Design */
-@media (max-width: 480px) {
-    body {
-        padding: 5px;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-    }
-    
-    .cell {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
-    }
-    
-    .row {
-        gap: 2px;
-    }
-    
-    #board {
-        gap: 3px;
-        margin-bottom: 15px;
-    }
-    
-    .key {
-        width: 30px;
-        height: 40px;
-        font-size: 11px;
-    }
-    
-    #enter-key, #delete-key {
-        width: 50px;
-        font-size: 9px;
-    }
-    
-    .key-row {
-        gap: 3px;
-    }
-    
-    #keyboard {
-        gap: 4px;
-        margin-top: 15px;
-    }
-    
-    #message {
-        font-size: 14px;
-        margin: 10px 0;
-    }
-    
-    #reset-btn {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 360px) {
-    .cell {
-        width: 35px;
-        height: 35px;
-        font-size: 1em;
-    }
-    
-    .key {
-        width: 25px;
-        height: 35px;
-        font-size: 10px;
-    }
-    
-    #enter-key, #delete-key {
-        width: 45px;
-        font-size: 8px;
-    }
-    
-    h1 {
-        font-size: 1.3rem;
-    }
-}
-
 /* Landscape Mode */
 @media (max-height: 500px) and (orientation: landscape) {
     body {
@@ -265,32 +192,15 @@ h1 {
     }
     
     h1 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
+        font-size: min(4vw, 1.2rem);
+        margin-bottom: 1vh;
     }
     
     #board {
-        margin-bottom: 10px;
-    }
-    
-    .cell {
-        width: 30px;
-        height: 30px;
-        font-size: 1em;
+        margin-bottom: 1vh;
     }
     
     #keyboard {
-        margin-top: 10px;
-    }
-    
-    .key {
-        width: 25px;
-        height: 30px;
-        font-size: 9px;
-    }
-    
-    #enter-key, #delete-key {
-        width: 40px;
-        font-size: 7px;
+        margin-top: 1vh;
     }
 } 
