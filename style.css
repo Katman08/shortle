@@ -21,16 +21,16 @@ body {
 }
 
 h1 {
-    font-size: min(6vw, 2rem);
-    margin-bottom: 2vh;
+    font-size: 2rem;
+    margin-bottom: 20px;
     margin-top: 0;
 }
 
 #board {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    gap: 0.5vw;
-    margin-bottom: 2vh;
+    gap: 10px;
+    margin-bottom: 20px;
     justify-items: center;
     max-width: 100%;
     width: 100%;
@@ -38,27 +38,24 @@ h1 {
 
 .row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.3vw;
+    grid-template-columns: repeat(4, 40px);
+    gap: 5px;
     justify-content: center;
     max-width: 100%;
-    width: min(95vw, 300px);
 }
 
 .cell {
-    width: min(12vw, 50px);
-    height: min(12vw, 50px);
+    width: 40px;
+    height: 40px;
     border: 2px solid #3a3a3c;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: min(4vw, 1.5em);
+    font-size: 1.5em;
     background: #121213;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
-    min-width: 30px;
-    min-height: 30px;
 }
 
 .cell.correct {
@@ -79,27 +76,27 @@ h1 {
 #keyboard {
     display: flex;
     flex-direction: column;
-    gap: 0.5vw;
-    margin-top: 2vh;
+    gap: 8px;
+    margin-top: 20px;
     width: 100%;
-    max-width: min(95vw, 400px);
+    max-width: 400px;
 }
 
 .key-row {
     display: flex;
     justify-content: center;
-    gap: 0.3vw;
+    gap: 6px;
     width: 100%;
 }
 
 .key {
-    width: min(8vw, 35px);
-    height: min(12vw, 45px);
+    width: 40px;
+    height: 50px;
     border: none;
     border-radius: 4px;
     background: #818384;
     color: #fff;
-    font-size: min(3vw, 12px);
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     display: flex;
@@ -109,8 +106,6 @@ h1 {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     flex-shrink: 0;
-    min-width: 20px;
-    min-height: 30px;
 }
 
 .key:hover {
@@ -134,21 +129,20 @@ h1 {
 }
 
 #enter-key {
-    width: min(12vw, 50px);
-    font-size: min(2.5vw, 10px);
+    width: 65px;
+    font-size: 12px;
 }
 
 #delete-key {
-    width: min(12vw, 50px);
-    font-size: min(2.5vw, 10px);
+    width: 65px;
+    font-size: 12px;
 }
 
 #message {
-    margin: 1.5vh 0;
-    font-size: min(4vw, 16px);
+    margin: 20px 0;
+    font-size: 18px;
     font-weight: bold;
-    min-height: 24px;
-    padding: 0 2vw;
+    min-height: 27px;
 }
 
 .message.win {
@@ -167,13 +161,13 @@ h1 {
     background: #818384;
     color: #fff;
     border: none;
-    padding: min(2vh, 12px) min(4vw, 24px);
+    padding: 12px 24px;
     border-radius: 4px;
-    font-size: min(3.5vw, 16px);
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
-    margin-top: 1vh;
+    margin-top: 16px;
     touch-action: manipulation;
 }
 
@@ -183,6 +177,91 @@ h1 {
 
 #reset-btn:active {
     background: #6b6d6e;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: min(6vw, 2rem);
+        margin-bottom: 2vh;
+    }
+    
+    .cell {
+        width: min(12vw, 40px);
+        height: min(12vw, 40px);
+        font-size: min(4vw, 1.5em);
+    }
+    
+    .row {
+        grid-template-columns: repeat(4, min(12vw, 40px));
+        gap: min(1vw, 5px);
+    }
+    
+    #board {
+        gap: min(2vw, 10px);
+        margin-bottom: 2vh;
+    }
+    
+    .key {
+        width: min(8vw, 40px);
+        height: min(12vw, 50px);
+        font-size: min(3vw, 14px);
+    }
+    
+    #enter-key, #delete-key {
+        width: min(12vw, 65px);
+        font-size: min(2.5vw, 12px);
+    }
+    
+    .key-row {
+        gap: min(1vw, 6px);
+    }
+    
+    #keyboard {
+        gap: min(1.5vw, 8px);
+        margin-top: 2vh;
+        max-width: min(95vw, 400px);
+    }
+    
+    #message {
+        font-size: min(4vw, 18px);
+        margin: 2vh 0;
+    }
+    
+    #reset-btn {
+        padding: min(2vh, 12px) min(4vw, 24px);
+        font-size: min(3.5vw, 16px);
+        margin-top: 2vh;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .cell {
+        width: min(10vw, 35px);
+        height: min(10vw, 35px);
+        font-size: min(3.5vw, 1.2em);
+    }
+    
+    .row {
+        grid-template-columns: repeat(4, min(10vw, 35px));
+        gap: min(0.8vw, 3px);
+    }
+    
+    .key {
+        width: min(7vw, 30px);
+        height: min(10vw, 40px);
+        font-size: min(2.5vw, 11px);
+    }
+    
+    #enter-key, #delete-key {
+        width: min(10vw, 50px);
+        font-size: min(2vw, 10px);
+    }
+    
+    #keyboard {
+        max-width: min(98vw, 350px);
+    }
 }
 
 /* Landscape Mode */

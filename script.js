@@ -287,11 +287,14 @@ document.addEventListener("keydown", (e) => {
     
     if (e.key === "Enter") {
         if (currentRow < MAX_GUESSES) {
+            e.preventDefault();
             submitGuess();
         }
     } else if (e.key === "Backspace") {
+        e.preventDefault();
         deleteLetter();
     } else if (/^[A-Za-z]$/.test(e.key)) {
+        e.preventDefault();
         addLetter(e.key.toUpperCase());
     }
 }); 
