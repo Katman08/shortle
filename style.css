@@ -7,6 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 #game-container {
@@ -15,26 +16,36 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 0;
 }
 
 #board {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    gap: 10px;
+    gap: 5px;
     margin-bottom: 20px;
     justify-items: center;
+    max-width: 100%;
 }
 
 .row {
     display: grid;
-    grid-template-columns: repeat(4, 40px);
-    gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
     justify-content: center;
+    max-width: 100%;
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: 2px solid #3a3a3c;
     display: flex;
     justify-content: center;
@@ -64,34 +75,42 @@ body {
 #keyboard {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .key-row {
     display: flex;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
 }
 
 .key {
-    width: 40px;
-    height: 50px;
+    width: 35px;
+    height: 45px;
     border: none;
     border-radius: 4px;
     background: #818384;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .key:hover {
     background: #a1a3a4;
+}
+
+.key:active {
+    background: #6b6d6e;
 }
 
 .key.correct {
@@ -107,20 +126,21 @@ body {
 }
 
 #enter-key {
-    width: 65px;
-    font-size: 12px;
+    width: 60px;
+    font-size: 10px;
 }
 
 #delete-key {
-    width: 65px;
-    font-size: 12px;
+    width: 60px;
+    font-size: 10px;
 }
 
 #message {
-    margin: 20px 0;
-    font-size: 18px;
+    margin: 15px 0;
+    font-size: 16px;
     font-weight: bold;
-    min-height: 27px;
+    min-height: 24px;
+    padding: 0 10px;
 }
 
 .message.win {
@@ -145,8 +165,132 @@ body {
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
+    margin-top: 10px;
+    touch-action: manipulation;
 }
 
 #reset-btn:hover {
     background: #a1a3a4;
+}
+
+#reset-btn:active {
+    background: #6b6d6e;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .cell {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+    
+    .row {
+        gap: 2px;
+    }
+    
+    #board {
+        gap: 3px;
+        margin-bottom: 15px;
+    }
+    
+    .key {
+        width: 30px;
+        height: 40px;
+        font-size: 11px;
+    }
+    
+    #enter-key, #delete-key {
+        width: 50px;
+        font-size: 9px;
+    }
+    
+    .key-row {
+        gap: 3px;
+    }
+    
+    #keyboard {
+        gap: 4px;
+        margin-top: 15px;
+    }
+    
+    #message {
+        font-size: 14px;
+        margin: 10px 0;
+    }
+    
+    #reset-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+    .cell {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+    
+    .key {
+        width: 25px;
+        height: 35px;
+        font-size: 10px;
+    }
+    
+    #enter-key, #delete-key {
+        width: 45px;
+        font-size: 8px;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    #board {
+        margin-bottom: 10px;
+    }
+    
+    .cell {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
+    
+    #keyboard {
+        margin-top: 10px;
+    }
+    
+    .key {
+        width: 25px;
+        height: 30px;
+        font-size: 9px;
+    }
+    
+    #enter-key, #delete-key {
+        width: 40px;
+        font-size: 7px;
+    }
 } 
