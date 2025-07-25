@@ -2,51 +2,15 @@
 // Shortle Web App - Main Script
 // ################################################################################
 
+import answerList from './answer_list.js';
+import guessList from './guess_list.js';
+
 const WORD_LENGTH = 4;
 const MAX_GUESSES = 6;
 let secretWord = "";
 let currentRow = 0;
 let board = [];
 let gameOver = false;
-let answerList = []; // Secret words from answer_list.txt
-let guessList = []; // Valid guesses from guess_list.txt
-
-// Load word lists from external files
-async function loadWordLists() {
-    try {
-        console.log('Starting to load word lists...');
-        
-        // Load answer list (secret words)
-        console.log('Loading answer_list.txt...');
-        const answerResponse = await fetch('answer_list.txt');
-        if (!answerResponse.ok) {
-            throw new Error(`Failed to load answer_list.txt: ${answerResponse.status}`);
-        }
-        const answerText = await answerResponse.text();
-        answerList = answerText.split('\n')
-            .map(word => word.trim().toUpperCase())
-            .filter(word => word.length >= WORD_LENGTH && /^[A-Z]+$/.test(word))
-            .map(word => word.substring(0, WORD_LENGTH));
-        
-        // Load guess list (valid guesses)
-        console.log('Loading guess_list.txt...');
-        const guessResponse = await fetch('guess_list.txt');
-        if (!guessResponse.ok) {
-            throw new Error(`Failed to load guess_list.txt: ${guessResponse.status}`);
-        }
-        const guessText = await guessResponse.text();
-        guessList = guessText.split('\n')
-            .map(word => word.trim().toUpperCase())
-            .filter(word => word.length >= WORD_LENGTH && /^[A-Z]+$/.test(word))
-            .map(word => word.substring(0, WORD_LENGTH));
-        
-        console.log(`Loaded ${answerList.length} answer words and ${guessList.length} guess words`);
-        return { answerList, guessList };
-    } catch (error) {
-        console.error('Error loading word lists:', error);
-        throw error;
-    }
-}
 
 function pickSecretWord() {
     if (answerList.length === 0) {
@@ -55,7 +19,6 @@ function pickSecretWord() {
     }
     const randomIndex = Math.floor(Math.random() * answerList.length);
     secretWord = answerList[randomIndex];
-    console.log('Secret word:', secretWord); // For debugging (remove in production)
 }
 
 function initBoard() {
@@ -255,24 +218,14 @@ function showMessage(msg, type) {
 }
 
 function startGame() {
-    loadWordLists().then(() => { // Wait for word lists to load
-        pickSecretWord();
-        initBoard();
-        currentRow = 0;
-        gameOver = false;
-        renderBoard();
-        renderKeyboard();
-        showMessage("");
-        document.getElementById("reset-btn").style.display = "none";
-    }).catch((error) => {
-        console.error('Failed to start game:', error);
-        // Show error message to user
-        showMessage("Error loading word lists. Please refresh the page.", "error");
-        // Still render the board and keyboard so user can see something
-        initBoard();
-        renderBoard();
-        renderKeyboard();
-    });
+    pickSecretWord();
+    initBoard();
+    currentRow = 0;
+    gameOver = false;
+    renderBoard();
+    renderKeyboard();
+    showMessage("");
+    document.getElementById("reset-btn").style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
