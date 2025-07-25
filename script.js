@@ -18,7 +18,7 @@ function pickSecretWord() {
         return;
     }
     const randomIndex = Math.floor(Math.random() * answerList.length);
-    secretWord = answerList[randomIndex];
+    secretWord = answerList[randomIndex].toLowerCase();
 }
 
 function initBoard() {
@@ -38,11 +38,11 @@ function renderBoard() {
             cellDiv.className = "cell";
             
             if (board[r][c]) {
-                cellDiv.textContent = board[r][c];
+                cellDiv.textContent = board[r][c].toUpperCase();
                 
                 // Add feedback classes for completed rows (only for submitted guesses)
                 if (r < currentRow) {
-                    const feedback = getFeedback(board[r], secretWord)[c];
+                    const feedback = getFeedback(board[r].map(l => l.toLowerCase()), secretWord)[c];
                     cellDiv.classList.add(feedback);
                 }
             }
@@ -129,14 +129,18 @@ function submitGuess() {
         return;
     }
     
-    const guessWord = currentGuess.join("");
+    const guessWord = currentGuess.join("").toLowerCase();
+
     if (!guessList.includes(guessWord)) {
         showMessage("Not in guess list", "error");
         return;
     }
     
-    const feedback = getFeedback(currentGuess, secretWord);
+    const feedback = getFeedback(currentGuess.map(l => l.toLowerCase()), secretWord);
     updateKeyboardColors(currentGuess, feedback);
+    
+    currentRow++;
+    renderBoard();
     
     if (feedback.every(f => f === "correct")) {
         showMessage("You win!", "win");
@@ -145,11 +149,9 @@ function submitGuess() {
         return;
     }
     
-    currentRow++;
-    renderBoard(); // Re-render after currentRow is incremented
     
     if (currentRow === MAX_GUESSES) {
-        showMessage(`Game over! The word was: ${secretWord}`, "loss");
+        showMessage(`Game over! The word was: ${secretWord.toUpperCase()}`, "loss");
         gameOver = true;
         document.getElementById("reset-btn").style.display = "block";
         return;
@@ -219,6 +221,7 @@ function showMessage(msg, type) {
 
 function startGame() {
     pickSecretWord();
+    console.log(secretWord);
     initBoard();
     currentRow = 0;
     gameOver = false;
@@ -229,7 +232,6 @@ function startGame() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('DOM loaded, starting game...');
     startGame();
     document.getElementById("reset-btn").addEventListener("click", startGame);
 });
