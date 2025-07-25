@@ -221,7 +221,6 @@ function showMessage(msg, type) {
 
 function startGame() {
     pickSecretWord();
-    console.log(secretWord);
     initBoard();
     currentRow = 0;
     gameOver = false;
